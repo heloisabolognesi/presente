@@ -21,7 +21,7 @@ export const places: Place[] = [
     date: "07/08/2025",
     lat: -23.5582,
     lng: -46.6027,
-    photo: "https://picsum.photos/seed/pl1/600/400",
+    photo: "/photos/foto1.jpg",
     description: "Primeira visita técnica realizada nesse dia."
   },
   {
@@ -33,7 +33,7 @@ export const places: Place[] = [
     date: "07/08/2025",
     lat: -23.5397,
     lng: -46.6215,
-    photo: "https://picsum.photos/seed/pl2/600/400",
+    photo: "/photos/foto2.jpg",
     description: "Continuação das visitas técnicas."
   },
   {
@@ -45,7 +45,7 @@ export const places: Place[] = [
     date: "07/08/2025",
     lat: -23.5416,
     lng: -46.5758,
-    photo: "https://picsum.photos/seed/pl3/600/400",
+    photo: "/photos/foto3.jpg",
     description: "Última visita técnica do dia."
   },
   {
@@ -57,7 +57,7 @@ export const places: Place[] = [
     date: "30/05/2025",
     lat: -23.5386,
     lng: -46.4676,
-    photo: "https://picsum.photos/seed/pl4/600/400",
+    photo: "/photos/filme.jpg",
     description: "Nosso dia no cinema assistindo Lilo & Stitch."
   },
   {
@@ -69,7 +69,7 @@ export const places: Place[] = [
     date: "2025",
     lat: -23.5413,
     lng: -46.4950,
-    photo: "https://picsum.photos/seed/pl5/600/400",
+    photo: "/photos/torneio.jpg",
     description: "Primeiro torneio da temporada."
   },
   {
@@ -81,7 +81,7 @@ export const places: Place[] = [
     date: "Setembro de 2025",
     lat: -23.5594,
     lng: -46.7268,
-    photo: "https://picsum.photos/seed/pl6/600/400",
+    photo: "/photos/foto4.jpg",
     description: "Visita cultural incrível."
   },
   {
@@ -92,7 +92,7 @@ export const places: Place[] = [
     date: "2025",
     lat: -23.5500,
     lng: -46.6333,
-    photo: "https://picsum.photos/seed/pl7/600/400",
+    photo: "/photos/foto5.jpg",
     description: "Visita técnica à empresa de engenharia."
   },
   {
@@ -103,7 +103,7 @@ export const places: Place[] = [
     date: "04/12/2025",
     lat: -23.5206,
     lng: -46.1854,
-    photo: "https://picsum.photos/seed/pl8/600/400",
+    photo: "/photos/foto6.jpg",
     description: "Primeira grande competição da temporada."
   },
   {
@@ -114,7 +114,7 @@ export const places: Place[] = [
     date: "26/01/2026",
     lat: -21.7635,
     lng: -52.1156,
-    photo: "https://picsum.photos/seed/pl9/600/400",
+    photo: "/photos/foto7.jpg",
     description: "Dias intensos de aprendizado e preparação para o Nacional."
   },
   {
@@ -126,7 +126,7 @@ export const places: Place[] = [
     date: "04/03/2026",
     lat: -23.5874,
     lng: -46.6576,
-    photo: "https://picsum.photos/seed/pl10/600/400",
+    photo: "/photos/foto8.jpg",
     description: "O maior momento da nossa jornada até aqui."
   },
   {
@@ -138,7 +138,7 @@ export const places: Place[] = [
     date: "2026",
     lat: -23.5898,
     lng: -46.6019,
-    photo: "https://picsum.photos/seed/pl11/600/400",
+    photo: "/photos/foto9.jpg",
     description: "Mais um capítulo importante da nossa história."
   }
 ];
