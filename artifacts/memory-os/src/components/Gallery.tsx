@@ -4,87 +4,123 @@ import { X } from "lucide-react";
 import { photos } from "@/data/photos";
 import SectionHeading from "./SectionHeading";
 
+// Subtle, consistent rotations between -5° and +5°
+const ROTATIONS = [-3, 2, -1.5, 3.5, -2.5, 1, -4, 2.5];
+
 export default function Gallery() {
   const [openId, setOpenId] = useState<string | null>(null);
   const openPhoto = photos.find((p) => p.id === openId);
 
-  const getRotation = (i: number) => {
-    const rotations = ["-rotate-3", "rotate-2", "-rotate-1", "rotate-3", "-rotate-2", "rotate-1"];
-    return rotations[i % rotations.length];
-  };
-
   return (
-    <section className="relative py-28 px-6 bg-space">
+    <section className="relative py-28 px-4 sm:px-8 bg-space">
       <SectionHeading
         eyebrow="Capítulo 02"
         title="Galeria"
         subtitle="Alguns instantes que guardamos. Clique em qualquer um deles."
       />
 
-      <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-10 pb-10">
-        {photos.map((photo, i) => (
-          <motion.button
-            key={photo.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, delay: (i % 3) * 0.08 }}
-            whileHover={{ scale: 1.05, y: -10, zIndex: 10 }}
-            onClick={() => setOpenId(photo.id)}
-            className={`relative bg-[#FAFAFA] p-3 pb-12 sm:p-4 sm:pb-16 shadow-xl hover:shadow-2xl transition-all duration-300 ${getRotation(i)}`}
-          >
-            <div className="relative w-full aspect-square bg-[#050508] overflow-hidden">
-              <img
-                src={photo.src}
-                alt={photo.caption}
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  const el = e.target as HTMLImageElement;
-                  el.parentElement!.style.background = "#111";
-                }}
-              />
-            </div>
-            <div className="absolute bottom-2 sm:bottom-4 left-0 right-0 text-center px-4">
-              <p className="font-hand text-xl sm:text-2xl text-[#1a1a24] truncate">
-                {photo.caption}
-              </p>
-            </div>
-          </motion.button>
-        ))}
+      {/* Polaroid grid — uniform card size, balanced spacing */}
+      <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-8 sm:gap-10 pb-10">
+        {photos.map((photo, i) => {
+          const deg = ROTATIONS[i % ROTATIONS.length];
+          return (
+            <motion.button
+              key={photo.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.55, delay: (i % 3) * 0.07 }}
+              whileHover={{
+                scale: 1.06,
+                rotate: 0,
+                y: -8,
+                zIndex: 20,
+                transition: { duration: 0.25 }
+              }}
+              style={{ rotate: `${deg}deg` }}
+              onClick={() => setOpenId(photo.id)}
+              /* Fixed polaroid dimensions: same on all cards */
+              className="relative flex-none bg-[#F8F6F0] shadow-lg hover:shadow-2xl transition-shadow duration-300"
+              aria-label={photo.caption}
+            >
+              {/* Photo area — fixed square, consistent across all cards */}
+              <div
+                className="bg-[#050508] overflow-hidden"
+                style={{ width: "160px", height: "160px" }}
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.caption}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const el = e.target as HTMLImageElement;
+                    el.style.display = "none";
+                    el.parentElement!.style.background = "#1a1a2e";
+                  }}
+                />
+              </div>
+
+              {/* Caption strip — fixed height, same for every card */}
+              <div
+                className="flex items-center justify-center px-2"
+                style={{ width: "160px", height: "44px" }}
+              >
+                <p
+                  className="font-hand text-lg text-[#1a1a24] text-center leading-tight line-clamp-1 w-full"
+                >
+                  {photo.caption}
+                </p>
+              </div>
+            </motion.button>
+          );
+        })}
       </div>
 
+      {/* Lightbox modal */}
       <AnimatePresence>
         {openPhoto && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/92 backdrop-blur-md flex items-center justify-center p-6"
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-6"
             onClick={() => setOpenId(null)}
           >
             <motion.div
-              initial={{ scale: 0.94, opacity: 0, y: 20 }}
+              initial={{ scale: 0.9, opacity: 0, y: 16 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.96, opacity: 0, y: 10 }}
-              transition={{ duration: 0.4 }}
-              className="relative max-w-xl w-full bg-[#FAFAFA] p-4 pb-20 sm:p-6 sm:pb-24 shadow-2xl"
+              exit={{ scale: 0.95, opacity: 0, y: 8 }}
+              transition={{ duration: 0.3 }}
+              className="relative bg-[#F8F6F0] shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative w-full aspect-square bg-[#050508] overflow-hidden">
+              {/* Large photo */}
+              <div
+                className="bg-[#050508] overflow-hidden"
+                style={{ width: "min(480px, 85vw)", height: "min(480px, 85vw)" }}
+              >
                 <img
                   src={openPhoto.src}
                   alt={openPhoto.caption}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute bottom-6 left-0 right-0 text-center px-6">
-                <p className="font-hand text-3xl sm:text-4xl text-[#1a1a24]">
+
+              {/* Caption */}
+              <div
+                className="flex items-center justify-center px-6"
+                style={{ width: "min(480px, 85vw)", height: "64px" }}
+              >
+                <p className="font-hand text-2xl sm:text-3xl text-[#1a1a24] text-center">
                   {openPhoto.caption}
                 </p>
               </div>
+
+              {/* Close button */}
               <button
                 onClick={() => setOpenId(null)}
-                className="absolute -top-12 right-0 w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:border-white/30 transition-colors duration-300"
+                className="absolute -top-12 right-0 w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-colors duration-200"
               >
                 <X className="w-4 h-4" />
               </button>
