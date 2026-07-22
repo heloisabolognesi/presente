@@ -11,7 +11,6 @@ import FinalScreen from "@/components/FinalScreen";
 import SmoothScroll from "@/components/SmoothScroll";
 import MouseGlow from "@/components/MouseGlow";
 import MemoryMenu from "@/components/MemoryMenu";
-import Letter from "@/components/Letter";
 
 type Stage = "boot" | "auth" | "unlocked";
 
@@ -60,9 +59,6 @@ export default function App() {
 
             <div className="section-divider" />
             <Terminal />
-
-            <div className="section-divider" />
-            <Letter />
 
             <div className="section-divider" />
             <PlacesMap />
