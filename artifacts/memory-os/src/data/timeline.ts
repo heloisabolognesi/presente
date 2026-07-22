@@ -39,7 +39,7 @@ export const timelineEvents: TimelineEvent[] = [
     id: "conquistas",
     date: "2025",
     title: "Regional UNEARTHED",
-    description: "Acredito que não tenho que falar muito sobre esse dia, porque o tanto que eu chorei foi brincadira.",
+    description: "Acredito que não tenho que falar muito sobre esse dia, porque o tanto que eu chorei foi brincadeira.",
     photo: "/photos/foto5.jpg"
   },
   {
