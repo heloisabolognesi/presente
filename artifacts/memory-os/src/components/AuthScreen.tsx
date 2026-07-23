@@ -71,9 +71,9 @@ export default function AuthScreen({ onUnlocked }: { onUnlocked: () => void }) {
               ACCESS REQUIRED
             </h1>
             <p className="text-mutedgray font-body text-sm sm:text-base leading-relaxed mb-8">
-              Nem toda senha é feita de números.
+              Se você chegou até aqui, já sabe que este presente é diferente.
               <br />
-              Algumas são feitas de lembranças.
+              A primeira surpresa é descobrir a senha. A combinação é uma lembrança que só nós conhecemos.
             </p>
 
             <div className="card-premium card-shimmer rounded-2xl p-6 sm:p-8">
