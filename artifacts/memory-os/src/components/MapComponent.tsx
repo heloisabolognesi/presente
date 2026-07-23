@@ -115,7 +115,7 @@ export default function MapComponent({ places, onSelectPlace, selectedPlace }: M
     map.flyTo(coords, 13, { animate: true, duration: 1.2 });
 
     markersRef.current.forEach((marker, i) => {
-      const isCurrent = places[i].order === selectedPlace.order;
+      const isCurrent = i < places.length && places[i].order === selectedPlace.order;
       marker.setIcon(createMarkerIcon(isCurrent));
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps

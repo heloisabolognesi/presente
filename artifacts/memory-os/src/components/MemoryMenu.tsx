@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { Clock, Image as ImageIcon, TerminalSquare, Feather, MapPin } from "lucide-react";
+import { Clock, Image as ImageIcon, TerminalSquare, Video, MapPin } from "lucide-react";
 import StarField from "./StarField";
 import { scrollToSection } from "@/lib/scrollTo";
 
 const files = [
   { id: "timeline", label: "linha-do-tempo", ext: ".log", icon: Clock },
   { id: "gallery", label: "galeria", ext: ".zip", icon: ImageIcon },
-  { id: "open-when", label: "abra-quando", ext: ".txt", icon: Feather },
+  { id: "video-message", label: "recado", ext: ".mp4", icon: Video },
   { id: "terminal-section", label: "terminal", ext: ".exe", icon: TerminalSquare },
   { id: "places", label: "mapa", ext: ".geo", icon: MapPin }
 ];

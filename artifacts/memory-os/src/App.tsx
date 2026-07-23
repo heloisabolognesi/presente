@@ -5,7 +5,7 @@ import AuthScreen from "@/components/AuthScreen";
 import Timeline from "@/components/Timeline";
 import Gallery from "@/components/Gallery";
 import Terminal from "@/components/Terminal";
-import OpenWhen from "@/components/OpenWhen";
+import VideoMessage from "@/components/VideoMessage";
 import PlacesMap from "@/components/PlacesMap";
 import FinalScreen from "@/components/FinalScreen";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -55,7 +55,7 @@ export default function App() {
             </div>
 
             <div className="section-divider" />
-            <OpenWhen />
+            <VideoMessage />
 
             <div className="section-divider" />
             <Terminal />
